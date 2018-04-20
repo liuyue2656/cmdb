@@ -12,6 +12,7 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import logging
 from logging.handlers import TimedRotatingFileHandler
+from config import DevConfig
 
 
 db = SQLAlchemy()
@@ -48,12 +49,12 @@ def create_app():
     # socketio.init_app(app)
 
     # NOTE: 注册蓝图
-    # from .auth import auth as auth_blueprint
-    # app.register_blueprint(auth_blueprint)
-    #
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
+
     # from .user_control import user_control as user_control_blueprint
     # app.register_blueprint(user_control_blueprint, url_prefix="/user_control")
-    #
+
     # from .dashboard import dashboard as main_blueprint
     # app.register_blueprint(main_blueprint, url_prefix="/dashboard")
 

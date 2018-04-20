@@ -82,9 +82,10 @@ class Role(db.Model, MyModel):
     角色表
     """
     __tablename__ = "user_role"
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True, nullable=False)
     display_name = db.Column(db.String(64), unique=True, nullable=False)
-    permission = db.Column(db.Ingeter)
+    permission = db.Column(db.Integer)
     status = db.Column(db.Boolean, nullable=False, default=True)
 
 
@@ -93,6 +94,7 @@ class Menu(db.Model, MyModel):
     菜单表
     """
     __tablename__ = "user_menu"
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     title = db.Column(db.String(128), unique=True, nullable=False)
     # NOTE 父目录ID，0为顶级目录

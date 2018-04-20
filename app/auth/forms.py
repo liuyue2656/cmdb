@@ -6,16 +6,16 @@
 # Pw @ 2018/4/19 下午3:45
 
 
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import (
     StringField, PasswordField, BooleanField, SubmitField, ValidationError,
     SelectField
 )
 from wtforms.validators import Required, Length
-from app.models import User
+from app.models.user import User
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     u"""
     登陆表单
     """

@@ -15,8 +15,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class DevConfig(object):
     DEBUG = True
-    SECRET_KEY = ""
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost:3306/asdf?charset=utf8'
+    SECRET_KEY = "DtPrdVSm22gWpstYbT9ti9b6TvhbdqIr"
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost:3306/lcmd?charset=utf8'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_EXPIRE_ON_COMMIT = True
