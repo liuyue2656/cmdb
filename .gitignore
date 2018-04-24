@@ -1,6 +1,6 @@
 *.pyc
+*.log
 
 venv/
 .idea/
 migrations/
-/logs/*
