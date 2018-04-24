@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     _password = db.Column(db.String(128), nullable=False)
     last = db.Column(db.DateTime)
     own_menu = db.String(2048)
-    logs = db.relationship("Log", backref="user")
+    # logs = db.relationship("Log", backref="user")
     # roles = db.relationship("Role", secondary=user_role,
     #                         backref=db.backref("user", lazy="dynamic"))
 
@@ -52,24 +52,25 @@ class User(UserMixin, db.Model):
 
     def generate_menu(self):
         # NOTE: 生成用户个性化菜单
-        menu_dict = collections.OrderedDict()
-        child_menu = set()
-        for role in self.roles:
-            for permission in role.permissions:
-                child_menu.update(permission.menus)
-        parent_menu = child_menu & set(Menu.query.filter_by(pid=0).all())
-        child_menu = child_menu - parent_menu
-        parent_menu = sorted(parent_menu, key=lambda key: key.display_order)
-        for menu in parent_menu:
-            if menu.url:
-                menu_dict[menu.title] = menu.url
-            else:
-                menu_dict[menu.title] = collections.OrderedDict()
-                _menu = [m for m in child_menu if m.pid == menu.id]
-                _menu = sorted(_menu, key=lambda key: key.display_order)
-                for c_menu in _menu:
-                    menu_dict[menu.title][c_menu.title] = c_menu.url
-        return json.dumps(menu_dict)
+        # menu_dict = collections.OrderedDict()
+        # child_menu = set()
+        # for role in self.roles:
+        #     for permission in role.permissions:
+        #         child_menu.update(permission.menus)
+        # parent_menu = child_menu & set(Menu.query.filter_by(pid=0).all())
+        # child_menu = child_menu - parent_menu
+        # parent_menu = sorted(parent_menu, key=lambda key: key.display_order)
+        # for menu in parent_menu:
+        #     if menu.url:
+        #         menu_dict[menu.title] = menu.url
+        #     else:
+        #         menu_dict[menu.title] = collections.OrderedDict()
+        #         _menu = [m for m in child_menu if m.pid == menu.id]
+        #         _menu = sorted(_menu, key=lambda key: key.display_order)
+        #         for c_menu in _menu:
+        #             menu_dict[menu.title][c_menu.title] = c_menu.url
+        # return json.dumps(menu_dict)
+        pass
 
 
 @login_manager.user_loader
@@ -101,4 +102,4 @@ class Menu(db.Model, MyModel):
     pid = db.Column(db.Integer, nullable=False, default=0)
     url = db.Column(db.String(256))
     display_order = db.Column(db.Integer, nullable=False)
-    logs = db.relationship("Log", backref="menu")
+    # logs = db.relationship("Log", backref="menu")

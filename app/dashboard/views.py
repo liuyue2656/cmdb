@@ -7,8 +7,11 @@
 
 
 from . import dashboard
+from flask import render_template
+from flask_login import login_required
 
 
 @dashboard.route("/")
+@login_required
 def dashboard_root():
-    return "Hello, World!"
+    return render_template("dashboard/dashboard_root.html")

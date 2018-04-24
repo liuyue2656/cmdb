@@ -55,7 +55,7 @@ def create_app():
     # from .user_control import user_control as user_control_blueprint
     # app.register_blueprint(user_control_blueprint, url_prefix="/user_control")
 
-    # from .dashboard import dashboard as main_blueprint
-    # app.register_blueprint(main_blueprint, url_prefix="/dashboard")
+    from .dashboard import dashboard as main_blueprint
+    app.register_blueprint(main_blueprint, url_prefix="/dashboard")
 
     return app

@@ -8,8 +8,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import (
-    StringField, PasswordField, BooleanField, SubmitField, ValidationError,
-    SelectField
+    StringField, PasswordField, BooleanField, SubmitField, ValidationError
 )
 from wtforms.validators import Required, Length
 from app.models.user import User
