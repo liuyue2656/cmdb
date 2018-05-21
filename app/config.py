@@ -13,7 +13,8 @@ import logging
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
-class DevConfig(object):
+class DevelopmentConfig(object):
+    ENV = "development"
     DEBUG = True
     SECRET_KEY = "DtPrdVSm22gWpstYbT9ti9b6TvhbdqIr"
     SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost:3306/lcmd?charset=utf8'

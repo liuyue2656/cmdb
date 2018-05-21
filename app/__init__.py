@@ -10,9 +10,10 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask.logging import default_handler
 import logging
 from logging.handlers import TimedRotatingFileHandler
-from config import DevConfig
+from config import DevelopmentConfig
 
 
 db = SQLAlchemy()
@@ -30,9 +31,10 @@ formatter = logging.Formatter("%(asctime)s %(levelname)-8s %(module)s "
 def create_app():
     # NOTE: init application object
     app = Flask(__name__)
-    app.config.from_object(DevConfig)
+    app.config.from_object(DevelopmentConfig)
 
     # NOTE: config log
+    app.logger.removeHandler(default_handler)
     file_handle = TimedRotatingFileHandler(
         app.config.get("LOG_PATH", "logs/access.log"), "D", 1
     )

@@ -8,7 +8,7 @@
 
 from datetime import datetime
 from . import auth
-from flask import redirect, url_for, render_template, flash, session, request
+from flask import redirect, url_for, render_template, flash, session, request, current_app
 from flask_login import current_user, login_user, login_required, logout_user
 from forms import LoginForm
 from app.models.user import User
@@ -35,6 +35,7 @@ def login_page():
             login_user(user, form.remember_me.data)
             user.last = datetime.today()
             session.permanent = True
+            current_app.logger.debug("user {} is login.".format(user.email))
             return redirect(
                 request.args.get("next") or url_for("dashboard.dashboard_root")
             )
